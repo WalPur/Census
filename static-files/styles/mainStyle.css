@@ -62,7 +62,7 @@
 	}
 	section{
 		padding: 0.5em;
-		padding-bottom: 7em;
+		padding-bottom: 10em;
 		background-image: url(Фон.png);
 		background-size: 100% 100%;
 		background-repeat: repeat-x;
@@ -77,6 +77,24 @@
 	.title{
 		text-align: center;
 	}
+	.buttons{
+		display: flex;
+		justify-content: space-around;
+	}
+	.buttons a{
+		padding: 1em;
+		font-size: 1.3em;
+		margin: auto;
+		border: 1px solid black;
+		border-radius: 15px;
+		text-align: center;
+		cursor: pointer;
+		background-color: #70C4BE;
+	}
+	.buttons a:hover{
+		background-color: #4999A3;
+		color: white;
+	}
 	footer{
 		padding-left: 197px;
 		border-top: 1px solid black;
@@ -84,7 +102,6 @@
 	.footerArticle{
 		padding: 0.5em;
 	}
-
 	@media (max-width: 1300px){
 		section{
 			padding-bottom: 12em;
