@@ -8,7 +8,7 @@ def index(request):
 	return render(request, "index.html")
 def registration(request):
 	registForm = registrationForms()
-	return render(request, "registation.html", {"form": registForm})
+	return render(request, "registration.html", {"form": registForm})
 def signin(request):
 	signinForm = signinForms()
-	return render(request, "signin.html", {"form": signinForms})
+	return render(request, "registration.html", {"form": signinForms})
