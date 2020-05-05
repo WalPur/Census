@@ -18,6 +18,8 @@ class registrationForms(forms.Form):
 	
 	email = forms.CharField(label="Электронная почта", required=False)
 	phone = forms.EmailField(label="Номер телефона")
+	avatar = forms.ImageField(label="Фото профиля")
+
 class signinForms(forms.Form):
 	login = forms.CharField(label="СНИЛС или номер телефона")
 	password = forms.CharField(label="Пароль", widget=forms.PasswordInput)

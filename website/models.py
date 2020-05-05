@@ -19,8 +19,9 @@ class profile(models.Model):
 	district = models.CharField(max_length=500)
 	locality = models.CharField(max_length=500)
 	address = models.CharField(max_length=500)
-	
+
 	phone = models.CharField(max_length=500)
+	avatar = models.ImageField()
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
