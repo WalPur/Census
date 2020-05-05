@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+	<link rel="stylesheet" href="{% static "styles/mainStyle.css" %}">
+	<title>Census - сайт переписи населения</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0">
+</head>
+<body>
+	<div id="main">
+		<aside>
+			<img class="avatar" src="{% static "images/Иконка.png" %}">
+
+			<nav>
+				<div class="navBar">Личный кабинет</div>
+				<div class="navBar">Ваши бонусы</div>
+				<div class="navBar">Доп. инфо</div>
+				<div class="navBar active">Новостная лента</div>
+			</nav>
+		</aside>
+
+		<div id="rightPage">
+
+			<header>
+				<div class="leftHeader"><img class="logo" src="{% static "images/лого.png" %}" alt=""></div>
+				<div class="rightHeader"><img class="bonusButton" src="{% static "images/present.svg" %}"></div>
+			</header>
+
+			<section>
+
+				<article>
+					<h2>Заголовок 1</h2>
+					<p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, sunt excepturi est nostrum sed maiores architecto mollitia quis aliquid amet molestiae ex eum recusandae sit quidem autem aliquam eius. Aperiam?</span>
+					<span>Exercitationem recusandae sequi placeat, sit nam quidem molestiae asperiores optio vero eius dolor ipsam fugit eum, debitis ex neque quibusdam tenetur voluptatum labore maxime non et quas veniam unde amet!</span>
+					<span>Iste fugit optio necessitatibus laboriosam quam pariatur, molestias minima, distinctio dicta at corrupti, nulla dolores esse officiis doloribus laborum. Amet maxime, deleniti commodi sapiente? Magni maiores ad natus quam deserunt.</span></p>
+				</article>
+
+				<article>
+					<h2>Заголовок 2</h2>
+					<p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, sunt excepturi est nostrum sed maiores architecto mollitia quis aliquid amet molestiae ex eum recusandae sit quidem autem aliquam eius. Aperiam?</span>
+					<span>Exercitationem recusandae sequi placeat, sit nam quidem molestiae asperiores optio vero eius dolor ipsam fugit eum, debitis ex neque quibusdam tenetur voluptatum labore maxime non et quas veniam unde amet!</span>
+					<span>Iste fugit optio necessitatibus laboriosam quam pariatur, molestias minima, distinctio dicta at corrupti, nulla dolores esse officiis doloribus laborum. Amet maxime, deleniti commodi sapiente? Magni maiores ad natus quam deserunt.</span></p>
+				</article>
+
+				<article>
+					<h2>Заголовок 3</h2>
+					<p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, sunt excepturi est nostrum sed maiores architecto mollitia quis aliquid amet molestiae ex eum recusandae sit quidem autem aliquam eius. Aperiam?</span>
+					<span>Exercitationem recusandae sequi placeat, sit nam quidem molestiae asperiores optio vero eius dolor ipsam fugit eum, debitis ex neque quibusdam tenetur voluptatum labore maxime non et quas veniam unde amet!</span>
+					<span>Iste fugit optio necessitatibus laboriosam quam pariatur, molestias minima, distinctio dicta at corrupti, nulla dolores esse officiis doloribus laborum. Amet maxime, deleniti commodi sapiente? Magni maiores ad natus quam deserunt.</span></p>
+				</article>
+
+			</section>
+		</div>
+	</div>
+
+	<footer>
+		<article class="footerArticle">
+			<h2>Подвал и контактная информация</h2>
+		</article>
+	</footer>
+</body>
+</html>

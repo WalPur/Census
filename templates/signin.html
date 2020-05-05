@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<link rel="stylesheet" href="{% static "styles/inputStyle.css" %}">
+	<title>Census - сайт переписи населения</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0">
+</head>
+<body>
+	<section>
+		<header>
+			<img class="logo" src="{% static "images/лого.png" %}">
+			Census
+		</header>
+		<div class="main">
+			<span class="titleText">Вход в систему</span>
+
+			<form>
+				{% csrf_token %}
+
+				<div>
+			        {% for field in form %}
+				        <div class="row">
+				            {{field.label_tag}}
+				            <div class="inputField">{{field}}</div>
+				        </div>
+		        	{% endfor %}
+		        </div>
+
+				<input class="submitButton" type="submit" value="Отправить">
+			</form>
+		</div>
+	</section>
+</body>
+</html>

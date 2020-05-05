@@ -1,0 +1,47 @@
+	html{
+		height: 100%;
+		font-family: sans-serif;
+	}
+	body{
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-image: url(Фон.png);
+		background-size: 100% 100%;
+		background-repeat: repeat-x;
+	}
+	section{
+		min-width: 300px;
+		padding: 4em;
+		background-color: white;
+	}
+	header{
+		vertical-align: middle;
+		font-size: 2em;
+		max-height: 2em;
+	}
+	.logo{
+		height: 1.5em;
+	}
+	.main{
+		margin-top: 1em;
+	}
+	.titleText{
+		font-size: 1.5em;
+	}
+	.inputField input{
+		width: 100%;
+	}
+	.submitButton{
+		margin-top: 2em;
+		float: right;
+	}
+@media (max-width: 425px){
+	section{
+		max-width: 100%;
+		width: 100%;
+	}
+}
