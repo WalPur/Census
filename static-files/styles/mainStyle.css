@@ -16,12 +16,16 @@
 	.avatar{
 		width: 180px;
 	}
+	a{
+		color: inherit;
+		padding: 0.4em;
+		text-decoration: none;
+	}
 	.navBar{
 		margin: auto;
 		border: 1px solid black;
 		margin: 1em;
 		text-align: center;
-		padding: 0.2em;
 		cursor: pointer;
 	}
 	.navBar:hover{
@@ -31,6 +35,10 @@
 	.active{
 		background-color: #E28A31;
 		color: white;
+		cursor: default;
+	}
+	.active a{
+		cursor: default;
 	}
 	.active:hover{
 		background-color: #E28A31;
@@ -58,6 +66,16 @@
 		background-image: url(Фон.png);
 		background-size: 100% 100%;
 		background-repeat: repeat-x;
+	}
+	p{
+		font-size: 14pt;
+	}
+	h1{
+		font-size: 2em;
+		margin: 0;
+	}
+	.title{
+		text-align: center;
 	}
 	footer{
 		padding-left: 197px;
@@ -91,6 +109,7 @@
 		nav{
 			display: flex;
 			justify-content: space-between;
+			width: 100%
 		}
 		.navBar{
 			margin: 0;
