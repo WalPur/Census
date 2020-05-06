@@ -5,7 +5,7 @@ from django.dispatch import receiver
 
 # Create your models here.
 class profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, on_delete = models.CASCADE)
 
 	surname = models.CharField(max_length=500)
 	name = models.CharField(max_length=500)
@@ -23,11 +23,5 @@ class profile(models.Model):
 	phone = models.CharField(max_length=500)
 	avatar = models.ImageField()
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+	group = models.IntegerField()
+	childs = models.IntegerField()

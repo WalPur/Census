@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+	<link rel="stylesheet" href="{% static "styles/mainStyle.css" %}">
+	<title>Census - сайт переписи населения</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0">
+</head>
+<body>
+	<div id="main">
+		<aside>
+			<img class="avatar" src="{% static "images/Иконка.png" %}">
+
+			<nav>
+				<div class="navBar"><a href="/">Личный кабинет</a></div>
+				<div class="navBar active"><a href="/bonus">Ваши бонусы</a></div>
+				<div class="navBar"><a href="/info">Доп. инфо</a></div>
+				<div class="navBar"><a href="/news">Новостная лента</a>
+		</aside>
+
+		<div id="rightPage">
+
+			<header>
+				<div class="leftHeader"><img class="logo" src="{% static "images/лого.png" %}" alt=""></div>
+				<div class="rightHeader"><img class="bonusButton" src="{% static "images/present.svg" %}"></div>
+			</header>
+
+			<section>
+
+				<article>
+					<h1 class="title">Census</h1>
+					<p>
+						Для тех кто пока не подтвердил документы или не входит в социальной помощи, то для них имеется скидка до 10% у наших партнеров.
+					</p>
+					<p>
+						Для многодетным семьям с тремя детьми скидка 10% суммируется с предедущим, в итоге 20%. За каждого следующего ребенка к скидке прибавляется 2,5%.
+					</p>
+					<p>
+						Для инвалидов третьей группы предоставляется скидка 5%, для второй группы 10%, для первой группы 20%. Таким образом 15%, 20%, 30% соответственно
+					</p>
+					<h2 class="title">Ваша скидка составляет: {{ discount }}%</h2>
+				</article>
+
+			</section>
+		</div>
+	</div>
+
+	<footer>
+		<article class="footerArticle">
+			<h2>Подвал и контактная информация</h2>
+		</article>
+	</footer>
+</body>
+</html>

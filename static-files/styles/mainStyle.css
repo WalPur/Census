@@ -13,10 +13,14 @@
 		padding: 0.5em;
 		border-right: 1px solid black;
 	}
+	#rightPage{
+		width: 100%;
+	}
 	.avatar{
 		width: 180px;
+		
 	}
-	a{
+	.navBar a{
 		color: inherit;
 		padding: 0.4em;
 		text-decoration: none;
@@ -36,6 +40,9 @@
 		background-color: #E28A31;
 		color: white;
 		cursor: default;
+	}
+	p a:hover{
+		text-decoration: none;
 	}
 	.active a{
 		cursor: default;
@@ -96,10 +103,11 @@
 		color: white;
 	}
 	footer{
-		padding-left: 197px;
 		border-top: 1px solid black;
 	}
 	.footerArticle{
+		width: 80%;
+		float: right;
 		padding: 0.5em;
 	}
 	@media (max-width: 1300px){
@@ -132,7 +140,8 @@
 			margin: 0;
 			margin: auto;
 		}
-		footer{
-			padding: 0;
+		.footerArticle{
+			width: 100%;
+			float: none;
 		}
 	}
