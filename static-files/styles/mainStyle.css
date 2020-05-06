@@ -1,40 +1,43 @@
 	@font-face {
-	    font-family: Roboto;
-	    src: url(fonts/Roboto-Regular.ttf);
+	    font-family: verdana;
+	    src: url(fonts/verdana.ttf);
+	}
+	@font-face{
+		font-family: VAG;
+		src: url('fonts/VAG World.ttf');
+	}
+	html{
+		height: 100%;
 	}
 	body{
 		margin: 0;
 		padding: 0;
-		font-family: 'Roboto';
+		font-family: 'verdana';
+		height: 100%;
 	}
 	aside{
-		width: 20%;
+		height: 100%;
+		color: white;
+		font-family: VAG;
+		width: 10%;
 		float: left;
-		padding: 0.5em;
-		border-right: 1px solid black;
+		background-color: #0C1352;
 	}
 	#rightPage{
+		background-image: url('задний план.png');
+		background-size: 100% 100%;
+		background-repeat: repeat-x;
 		width: 100%;
 	}
 	.avatar{
-		width: 180px;
-		
+		width: 100%;
 	}
-	.navBar a{
-		color: inherit;
-		padding: 0.4em;
-		text-decoration: none;
-	}
-	.navBar{
+	.aIcon{
+		width: 50%;
+		display: block;
 		margin: auto;
-		border: 1px solid black;
-		margin: 1em;
-		text-align: center;
-		cursor: pointer;
-	}
-	.navBar:hover{
-		background-color: #4999A3;
-		color: white;
+		margin-top: 1em;
+		margin-bottom: 1em;
 	}
 	.active{
 		background-color: #E28A31;
@@ -52,27 +55,31 @@
 		color: white;
 	}
 	#main{
+		height: 100%;
 		display: flex;
 		flex-direction: row
 	}
-	header{
-		padding: 0.5em;
-		border-bottom: 1px solid black;
-		display: flex;
-		justify-content: space-between;
-	}
-	.logo{
-		height: 2.5em;
-	}
-	.bonusButton{
-		width: 30px;
-	}
 	section{
+		color: black;
+		opacity: 0.7;
+    	filter: alpha(Opacity=70);
+		background-color: white;
+		margin: auto;
+		border-radius: 15px;
+		margin-top: 5em;
+		width: 80%;
 		padding: 0.5em;
-		padding-bottom: 10em;
-		background-image: url(Фон.png);
-		background-size: 100% 100%;
-		background-repeat: repeat-x;
+	}
+	.mainInfo{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	.leftSide{
+		width: 80%;
+	}
+	.rightSide{
+		width: 20%;
 	}
 	p{
 		font-size: 14pt;
@@ -102,13 +109,28 @@
 		background-color: #4999A3;
 		color: white;
 	}
+	.qrImage{
+		width: 300px;
+		display: block;
+		margin: auto;
+	}
 	footer{
-		border-top: 1px solid black;
+		background-color: #0C1352;
+		color: #235EA7;
 	}
 	.footerArticle{
-		width: 80%;
-		float: right;
-		padding: 0.5em;
+		padding-right: 2em;
+		padding-left: 2em;
+		width: 90%;
+	}
+	.row{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	.columns{
+		display: flex;
+		flex-direction: column;
 	}
 	@media (max-width: 1300px){
 		section{
@@ -116,29 +138,41 @@
 		}
 	}
 	@media (max-width: 768px){
-		header{
-			display: none;
-		}
 		#main{
 			flex-direction: column;
+		}
+		.mainInfo{
+			flex-direction: column;
+		}
+		.avatar{
+			width: 70%;
+			display: block;
+			margin: auto;
+		}
+		.rightSide{
+			width: 100%;
+			margin: auto;
+			order: 1;
+		}
+		.leftSide{
+			width: 100%;
+			order: 2;
 		}
 		aside{
 			display: flex;
 			border: none;
 			width: 100%;
 			padding: 0;
-		}
-		.avatar{
-			width: 50px;
+			height: 70px;
 		}
 		nav{
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-evenly;
 			width: 100%
 		}
-		.navBar{
+		.aIcon{
 			margin: 0;
-			margin: auto;
+			width: 50px;
 		}
 		.footerArticle{
 			width: 100%;

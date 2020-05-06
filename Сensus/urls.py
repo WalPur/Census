@@ -23,7 +23,7 @@ urlpatterns = [
     path('regist', views.registration),
     path('signin', views.signin),
     path('bonus', views.bonus),
-
+    path('info', views.info),
     path('news', views.news),
 
     path('logout', views.logout)

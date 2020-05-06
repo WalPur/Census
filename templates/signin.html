@@ -10,7 +10,7 @@
 <body>
 	<section>
 		<header>
-			<img class="logo" src="{% static "images/лого.png" %}">
+			<img class="logo" src="{% static "images/иконка2.png" %}">
 			Census
 		</header>
 		<div class="main">
@@ -22,8 +22,9 @@
 				<div>
 			        {% for field in form %}
 				        <div class="row">
-				            {{field.label_tag}}
-				            <div class="inputField">{{field}}</div>
+				            {{ field.label_tag }}
+				            <div class="inputField">{{ field }}</div>
+				            {{ field.help_text }}
 				        </div>
 		        	{% endfor %}
 		        </div>

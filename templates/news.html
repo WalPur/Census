@@ -11,21 +11,16 @@
 <body>
 	<div id="main">
 		<aside>
-			<img class="avatar" src="{% static "images/Иконка.png" %}">
-
 			<nav>
-				<div class="navBar"><a href="/">Личный кабинет</a></div>
-				<div class="navBar"><a href="/bonus">Ваши бонусы</a></div>
-				<div class="navBar"><a href="/info">Доп. инфо</a></div>
-				<div class="navBar active"><a href="/news">Новостная лента</a>
+				<h1 class="title">CENSUS</h1>
+				<a href="/"><img src="{% static "images/иконка1.png" %}" class="aIcon"></a>
+				<a href="/bonus"><img src="{% static "images/иконка2.png" %}" class="aIcon"></a>
+				<a href="/info"><img src="{% static "images/иконка3.png" %}" class="aIcon"></a>
+				<a href="/news"><img src="{% static "images/иконка4.png" %}" class="aIcon"></a>
+			</nav>
 		</aside>
 
 		<div id="rightPage">
-
-			<header>
-				<div class="leftHeader"><img class="logo" src="{% static "images/лого.png" %}" alt=""></div>
-				<div class="rightHeader"><img class="bonusButton" src="{% static "images/present.svg" %}"></div>
-			</header>
 
 			<section style="min-height: 700px;">
 
@@ -38,6 +33,35 @@
 	<footer>
 		<article class="footerArticle">
 			<h2>Подвал и контактная информация</h2>
+			<div class="row">
+				<div class="columns">
+					<h3>Карта сайта</h3>
+					<a href="/">Главная</a>
+					<a href="/bonus">Бонусная программ</a>
+					<a href="/info">Доп. информация</a>
+					<a href="/news">Новости</a>
+					<a href="/regist">Регистрация</a>
+					<a href="/signin">Вход в систему</a>
+				</div>
+				<div class="columns">
+					<h3>Контакты менеджера</h3>
+					<p>89841098497</p>
+					<p>kesakoryakin19@gmail.com</p>
+					<p>Корякин Иннокентий Петрович</p>
+				</div>
+				<div class="columns">
+					<h3>Контакты дизайнера</h3>
+					<p>89841154417</p>
+					<p>daaya_ign_2002_123@mail.ru</p>
+					<p>Игнатьева Дайаана Александровна</p>
+				</div>
+				<div class="columns">
+					<h3>Контакты разработчика</h3>
+					<p>89241701065</p>
+					<p>mishkamba1@gmail.com</p>
+					<p>Игнатьев Михаил Александрович</p>
+				</div>
+			</div>
 		</article>
 	</footer>
 </body>

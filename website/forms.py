@@ -5,6 +5,8 @@ class registrationForms(forms.Form):
 	name = forms.CharField(label="Имя")
 	patronymic = forms.CharField(label="Отчество")
 
+	dateOfBirth = forms.DateField(label="Дата рождения", help_text="год/месяц/день или год-месяц-день", input_formats=['%d/%m/%Y', '%d-%m-%Y'])
+
 	SNILS = forms.CharField(label="СНИЛС", min_length=14, max_length=14)
 	passportS = forms.IntegerField(label="Серия пасспорта")
 	passportN = forms.IntegerField(label="Номер пасспорта")
@@ -18,7 +20,7 @@ class registrationForms(forms.Form):
 	
 	email = forms.EmailField(label="Электронная почта", required=False)
 	phone = forms.CharField(label="Номер телефона")
-	avatar = forms.ImageField(label="Фото профиля")
+	avatar = forms.ImageField(label="Фото профиля", required=False)
 
 	group = forms.IntegerField(label="Группа инвалидности", max_value=3, initial=0)
 	childs = forms.IntegerField(label="Дети", initial=0)

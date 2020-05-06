@@ -8,6 +8,7 @@ from django.contrib.auth import logout as django_logout
 from .forms import registrationForms
 from .forms import signinForms
 from .models import profile
+from random import randint
 
 # Create your views here.
 def index(request):
@@ -19,7 +20,7 @@ def index(request):
 		for id in people:
 			if place == people[id].district + " " +  people[id].locality:
 				count += 1
-		data = {"place": place, "num": count}
+		data = {"place": place, "num": count, "address": user.address, "dateOfBirth": user.dateOfBirth}
 		return render(request, "index.html", context=data)
 	return render(request, "index.html")
 def bonus(request):
@@ -35,11 +36,13 @@ def bonus(request):
 				discount += 5 #Третья группа
 		if user.childs >= 3:
 			discount += 10 + (user.childs - 3) * 2.5
-		data = {"discount": discount}
+		data = {"discount": discount, "token": user.token}
 		return render(request, "bonus.html", context=data)
 	return render(request, "bonus.html")
 def news(request):
 	return render(request, "news.html")
+def info(request):
+	return render(request, "info.html")
 def registration(request):
 	if request.user.is_authenticated:
 		return redirect('/lk')
@@ -61,6 +64,10 @@ def registration(request):
 		person.surname = surname
 		person.name = name
 		person.patronymic = patronymic
+
+		dateOfBirth = request.POST.get("dateOfBirth")
+
+		person.dateOfBirth = dateOfBirth
 
 		SNILS = request.POST.get("SNILS")
 		passportS = request.POST.get("passportS")
@@ -91,13 +98,23 @@ def registration(request):
 
 		person.password = password
 
+		childs = request.POST.get("childs")
+		group = request.POST.get("group")
+
+		person.childs = childs
+		person.group = group
+
 		user = User.objects.create_user(username, email, password)
 		user.save()
 		person.user = user
-		person.save()
+		
 		user = authenticate(username=username, password=password)
 		login(request, user)
 
+		num1 = randint(100000000, 999999999)
+		num2 = randint(1000000000, 9999999999)
+		person.token = str(num1) + ":" + str(num2)
+		person.save()
 		return redirect("/")
 	registForm = registrationForms()
 	data = {"form": registForm}

@@ -11,6 +11,8 @@ class profile(models.Model):
 	name = models.CharField(max_length=500)
 	patronymic = models.CharField(max_length=500)
 
+	dateOfBirth = models.DateField(default='1900.01.01')
+
 	SNILS_number = models.CharField(max_length=500)
 	SNILS_ctrl = models.IntegerField()
 	passportS = models.IntegerField()
@@ -21,7 +23,9 @@ class profile(models.Model):
 	address = models.CharField(max_length=500)
 
 	phone = models.CharField(max_length=500)
-	avatar = models.ImageField()
+	avatar = models.ImageField(blank=True)
 
 	group = models.IntegerField()
 	childs = models.IntegerField()
+
+	token = models.CharField(max_length=20)
