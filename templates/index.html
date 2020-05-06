@@ -38,8 +38,15 @@
 								<img src="{% static "images/Иконка.png" %}" class="avatar">
 							</div>
 						</div>
-						<h2 class="title">Адрес проживание</h2>
-						<h3 class="title">{{ place }}({{ num }} жителей) {{ address }}</h3>
+						<h2 class="title">Адрес проживания</h2>
+						{% if place != " " %}
+							<h3 class="title">{{ place }}({{ num }} жителей) {{ address }}</h3>
+						{% else %}
+							<h3 class="title">Место жительства не указано</h3>
+						{% endif %}
+						<div class="buttons">
+							<a href="/residense">Смена места жительства</a>
+						</div>
 						<p>Для получения бонусов необходимо заполнить <a href="/bonus">тут</a> документы подтверждающие вашу принадлежность к той или иной социальной группе</p>
 						<p><a href="/logout">Выйти из системы</a></p>
 					</article>

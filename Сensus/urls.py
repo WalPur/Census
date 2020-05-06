@@ -25,6 +25,9 @@ urlpatterns = [
     path('bonus', views.bonus),
     path('info', views.info),
     path('news', views.news),
-
+    path("residense", views.residense),
+    path("docs", views.docs),
+    path('contacs', views.contacs),
+    path('code', views.code),
     path('logout', views.logout)
 ]

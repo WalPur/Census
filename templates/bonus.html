@@ -36,10 +36,19 @@
 						Для инвалидов третьей группы предоставляется скидка 5%, для второй группы 10%, для первой группы 20%. Таким образом 15%, 20%, 30% соответственно
 					</p>
 					{% if user.is_authenticated %}
-					<h2 class="title">Ваша скидка составляет: {{ discount }}%</h2>
-					<h2 class="title">Ваш токен для получения скидки: {{ token }}</h2>
-					<h2 class="title">QR код для быстрого доступа:</h2>
-					<img src="https://qrcode.tec-it.com/API/QRCode?data={{ token }}" class="qrImage">
+						<h2 class="title">Ваша скидка составляет: {{ discount }}%</h2>
+						{% if discount == 0 %}
+							<h2 class="title">Заполните все формы для получения скидки!</h2>
+							<div class="buttons">
+								<a href="/residense">Записать место жительства</a>
+								<a href="/docs">Записать документы гражданина</a>
+								<a href="/contacs">Записать контактные данные</a>
+							</div>
+						{% else %}
+							<h2 class="title">Ваш токен для получения скидки: {{ token }}</h2>
+							<h2 class="title">QR код для быстрого доступа:</h2>
+							<img src="https://qrcode.tec-it.com/API/QRCode?data={{ token }}" class="qrImage">
+						{% endif %}
 					{% endif %}
 				</article>
 

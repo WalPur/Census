@@ -11,21 +11,23 @@ class profile(models.Model):
 	name = models.CharField(max_length=500)
 	patronymic = models.CharField(max_length=500)
 
-	dateOfBirth = models.DateField(default='1900.01.01')
+	dateOfBirth = models.DateField(default='1900.01.01', blank=True)
 
-	SNILS_number = models.CharField(max_length=500)
-	SNILS_ctrl = models.IntegerField()
-	passportS = models.IntegerField()
-	passportN = models.IntegerField()
+	SNILS_number = models.CharField(max_length=500, blank=True)
+	SNILS_ctrl = models.IntegerField(blank=True, default=0)
+	passportS = models.IntegerField(blank=True, default=0)
+	passportN = models.IntegerField(blank=True, default=0)
 
-	district = models.CharField(max_length=500)
-	locality = models.CharField(max_length=500)
-	address = models.CharField(max_length=500)
+	district = models.CharField(max_length=500, blank=True)
+	locality = models.CharField(max_length=500, blank=True)
+	address = models.CharField(max_length=500, blank=True)
 
-	phone = models.CharField(max_length=500)
-	avatar = models.ImageField(blank=True)
+	phone = models.CharField(max_length=500, blank=True)
 
-	group = models.IntegerField()
-	childs = models.IntegerField()
+	group = models.IntegerField(blank=True, default=0)
+	childs = models.IntegerField(blank=True, default=0)
+
+	isActive = models.BooleanField(default=0)
 
 	token = models.CharField(max_length=20)
+	code = models.CharField(max_length=6, blank=True)
