@@ -16,7 +16,8 @@
 	section{
 		min-width: 300px;
 		padding: 4em;
-		background-color: white;
+		background: rgba(255, 255, 255, 0.7);
+		border-radius: 15px;
 	}
 	header{
 		vertical-align: middle;

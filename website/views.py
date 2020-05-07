@@ -26,7 +26,7 @@ def index(request):
 		for id in people:
 			if place == people[id].district + " " +  people[id].locality:
 				count += 1
-		data = {"place": place, "num": count, "address": user.address, "dateOfBirth": user.dateOfBirth}
+		data = {"place": place, "num": count, "address": user.address}
 		return render(request, "index.html", context=data)
 	return render(request, "index.html")
 def bonus(request):
@@ -53,11 +53,11 @@ def info(request):
 	return render(request, "info.html")
 def registration(request):
 	if request.user.is_authenticated:
-		return redirect('/lk')
+		return redirect('/')
 	if request.method == "POST":
 		password = request.POST.get("password")
 		if password != request.POST.get("passwordReInput"):
-			data = {"form": registForm, "errorMessage": "Пароли не совпадают"}
+			data = {"form": registrationForms, "errorMessage": "Пароли не совпадают"}
 			return render(request, "registration.html", context=data)
 
 		#Надо добавить валидацию по СНИЛС
@@ -72,10 +72,6 @@ def registration(request):
 		person.surname = surname
 		person.name = name
 		person.patronymic = patronymic
-
-		dateOfBirth = request.POST.get("dateOfBirth")
-
-		person.dateOfBirth = dateOfBirth
 		person.password = password
 
 		user = User.objects.create_user(username, "",password)
@@ -92,6 +88,8 @@ def registration(request):
 	data = {"form": registForm}
 	return render(request, "registration.html", context=data)
 def signin(request):
+	if request.user.is_authenticated:
+		return redirect('/')
 	if request.method == "POST":
 		fullName = request.POST.get("login")
 		password = request.POST.get("password")
@@ -104,9 +102,9 @@ def signin(request):
 	signinForm = signinForms()
 	return render(request, "signin.html", {"form": signinForms})
 def docs(request):
+	if not request.user.is_authenticated:
+		return redirect('/')
 	person = profile.objects.get(user_id=request.user.id)
-	if person.SNILS_number != "":
-		return redirect("/")
 	if request.method == "POST":
 		SNILS = request.POST.get("SNILS")
 		passportS = request.POST.get("passportS")
@@ -123,12 +121,14 @@ def docs(request):
 		person.passportS = request.POST.get("passportS")
 		person.save(update_fields=["passportS", "passportN", "SNILS_ctrl", "SNILS_number", 'childs', 'group'])
 		user = User.objects.get(id=person.user_id)
-		if person.SNILS_number != "" and (person.phone != "" or user.email != "") and person.locality != "":
+		if person.SNILS_number != "" and (person.phone != "" or user.email != "") and person.locality != "" and person.isActive == 0:
 			person.isActive = 1
 			person.save(update_fields=["isActive"])
 		return redirect('/bonus')
 	return render(request, "dataFill.html", {'form': docsForms})
 def residense(request):
+	if not request.user.is_authenticated:
+		return redirect('/')
 	if request.method == "POST":
 		person = profile.objects.get(user_id=request.user.id)
 		district = request.POST.get("district")
@@ -139,16 +139,16 @@ def residense(request):
 		person.address = address
 		person.save(update_fields=["district", "locality", "address"])
 		user = User.objects.get(id=person.user_id)
-		if person.SNILS_number != "" and (person.phone != "" or user.email != "") and person.locality != "":
+		if person.SNILS_number != "" and (person.phone != "" or user.email != "") and person.locality != "" and person.isActive == 0:
 			person.isActive = 1
 			person.save(update_fields=["isActive"])
 		return redirect('/bonus')
 	return render(request, "dataFill.html", {'form': residenseForms})
 def contacs(request):
+	if not request.user.is_authenticated:
+		return redirect('/')
 	person = profile.objects.get(user_id=request.user.id)
 	user = User.objects.get(id=person.user_id)
-	if person.phone != "" or user.email != "":
-		return redirect("/")
 	if request.method == "POST":
 		person = profile.objects.get(user_id=request.user.id)
 		email = request.POST.get("email")
@@ -160,37 +160,39 @@ def contacs(request):
 		person.phone = phone
 		code = str(randint(100000, 999999))
 		person.code = code
-		person.save(update_fields=['code', 'phone'])
-		user.save(update_fields=['email'])
 		if email != "" and phone != "":
 			send_mail('Ваш код для дальнейшей авторизации', code, settings.EMAIL_HOST_USER, [email])
 			string = "Ваш код для дальнейшей авторизации: " + code
 			smsc = SMSC()
-			r = smsc.send_sms(phone, string, format=0, translit=1)
+			r = smsc.send_sms(profile.phone, string, format=0, translit=1)
 			print(r)
 		elif email != "":
 			send_mail('Ваш код для дальнейшей авторизации', code, settings.EMAIL_HOST_USER, [email])
 		else:
 			string = "Ваш код для дальнейшей авторизации: " + code
 			smsc = SMSC()
-			r = smsc.send_sms(phone, string, format=0, translit=1)
+			r = smsc.send_sms(profile.phone, string, format=0, translit=1)
 			print(r)
+		person.save(update_fields=['code', 'phone'])
+		user.save(update_fields=['email'])
 		return redirect('/code')
 	return render(request, "dataFill.html", {'form': comfirmForms})
 def code(request):
+	if not request.user.is_authenticated:
+		return redirect('/')
 	if request.method == "POST":
 		person = profile.objects.get(user_id=request.user.id)
 		user = User.objects.get(id=person.user_id)
 		code = request.POST.get("code")
 		if code == person.code:
 			person.code = ""
-			if person.SNILS_number != "" and (person.phone != "" or user.email != "") and person.locality != "":
+			if person.SNILS_number != "" and (person.phone != "" or user.email != "") and person.locality != "" and person.isActive == 0:
 				person.isActive = 1
 				person.save(update_fields=["isActive"])
 		else:
-			return render(request, "dataFill.html", {'form': codeForm, 'errorMessage': "Код неправильно написан"})
+			return render(request, "dataFill.html", {'form': codeForm, 'errorMessage': 'Код неправильно написан<br><a href="/contacs">Сменить номер, email</a>'})
 		return redirect('/')
-	return render(request, "dataFill.html", {'form': codeForm})
+	return render(request, "dataFill.html", {'form': codeForm, 'errorMessage': '<a href="/contacs">Сменить номер, email</a>'})
 def logout(request):
 	django_logout(request)
 	return redirect('/')

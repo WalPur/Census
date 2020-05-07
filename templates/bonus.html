@@ -47,7 +47,7 @@
 						{% else %}
 							<h2 class="title">Ваш токен для получения скидки: {{ token }}</h2>
 							<h2 class="title">QR код для быстрого доступа:</h2>
-							<img src="https://qrcode.tec-it.com/API/QRCode?data={{ token }}" class="qrImage">
+							<img src="https://qrcode.tec-it.com/API/QRCode?data=Token: <{{ token }}>" class="qrImage">
 						{% endif %}
 					{% endif %}
 				</article>

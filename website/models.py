@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 # Create your models here.
 class profile(models.Model):
@@ -11,7 +9,7 @@ class profile(models.Model):
 	name = models.CharField(max_length=500)
 	patronymic = models.CharField(max_length=500)
 
-	dateOfBirth = models.DateField(default='1900.01.01', blank=True)
+	dateOfBirth = models.DateField(default='1900-01-01', blank=True)
 
 	SNILS_number = models.CharField(max_length=500, blank=True)
 	SNILS_ctrl = models.IntegerField(blank=True, default=0)
